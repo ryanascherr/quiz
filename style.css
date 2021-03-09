@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: sans-serif;
+}
+
+header{
+    width: 50%;
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+}
+
+p{
+    margin: 5% 0;
+    font-size: 20px;
+}
+
+button{
+    display: block;
+    margin: 0 auto;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #FF8E7A;
+    color: #3E667A;
+    border-color: #986D81;
+    border-width: 5px;
+    transition-duration: .5s;
+}
+
+button:hover{
+    box-shadow: 10px 10px 10px #3E667A;
+    transform: scale(1.1);
+}
