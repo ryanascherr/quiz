@@ -6,6 +6,10 @@
     font-family: sans-serif;
 }
 
+.hidden{
+    display: none;
+}
+
 header{
     width: 50%;
     margin: 0 auto;
@@ -13,6 +17,8 @@ header{
 
 h1{
     text-align: center;
+    padding: 5% 0 0 0;
+    color: #3E667A;
 }
 
 p{
