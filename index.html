@@ -8,23 +8,32 @@
     <title>Javascript Quiz</title>
 </head>
 <body>
-    <header class="page-one">
-        <h1>Javascript Fundamentals Quiz</h1>
-        <p>When you click the button below, the quiz will begin. You will have 1 minute to complete it. If you get a question wrong, 10 seconds will be removed from the timer. The faster you complete it, the more points you get. Try to get the highest score possible - good luck!</p>
-    </header>
-    <button class="start-button page-one">Click to Start</button>
+
+    <div id="intro-page" class="shown">
+        <header>
+            <h1>Javascript Fundamentals Quiz</h1>
+            <p>When you click the button below, the quiz will begin. You will have 1 minute to complete it. If you get a question wrong, 10 seconds will be removed from the timer. The faster you complete it, the more points you get. Try to get the highest score possible - good luck!</p>
+        </header>
+        <button class="start-button page-one">Click to Start</button>
+    </div>
     <span id="timer"></span>
-    <div class="hidden" id="whole-page-two">
-        <h2 class="question-page-two" id="test"></h2>
-        <div class="answer page-two">
+
+    <div id="question-page" class="hidden">
+        <header>
+            <h2 id="question-text"></h2>
+        </header>
+        <div>
             <ul>
-                <li><button></button></li>
-                <li><button></button></li>
-                <li><button></button></li>
-                <li><button></button></li>
+                <li><button class="answer-button"></button></li>
+                <li><button class="answer-button"></button></li>
+                <li><button class="answer-button"></button></li>
+                <li><button class="answer-button"></button></li>
             </ul>
         </div>
     </div>
+
+    <div id="score-page"></div>
+
     <script src="./script.js"></script>
 </body>
 </html>

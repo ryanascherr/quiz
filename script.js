@@ -1,30 +1,29 @@
 var startButton = document.querySelector(".start-button");
 var timer = document.querySelector("#timer");
-var pageTwo = document.querySelector("#whole-page-two");
-var questionText = document.querySelector(".question-page-two");
+var introPage = document.querySelector("#intro-page");
+var questionPage = document.querySelector("#question-page");
+var scorePage = document.querySelector("#score-page");
+var questionText = document.querySelector("#question-text");
+var answerText = document.querySelectorAll(".answer-button");
 
 var questions = ["Question 1:", "Question 2:", "Question 3:", "Question 4:", "Question 5:"]
-var answersOne = [];
-var answersTwo = [];
-var answersThree = [];
-var answersFour = [];
-var answersFive = [];
+var answers = {
+    pageOne: ["1", "2", "3", "Again!"],
+    pageTwo: ["4", "5", "6"],
+    pageThree: ["7", "8", "9"],
+    pageFour: ["10", "11", "12"],
+    pageFive: ["13", "14", "15"]
+  };
 
 var secondsLeft = 60;
-var page = 0;
+var pageNumber = 0;
 
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
-    hideMainPage();
+    pageNumber++;
+    displayQuestionPage();
     startTimer();
-    page++;
-    displayPageOne();
-}
-
-function hideMainPage() {
-    document.getElementsByTagName("header")[0].setAttribute("class", "hidden");
-    document.getElementsByTagName("button")[0].setAttribute("class", "hidden");
 }
 
 function startTimer() {
@@ -40,7 +39,28 @@ function startTimer() {
     }, 1000);
 }
 
-function displayPageOne() {
-    pageTwo.setAttribute("class", "display");
-    questionText.innerHTML = questions[page-1];
+function displayIntroPage(){
+    scorePage.setAttribute("class", "hidden");
+    questionPage.setAttribute("class", "hidden");
+    introPage.setAttribute("class", "display");
+}
+
+function displayQuestionPage(){
+    scorePage.setAttribute("class", "hidden");
+    introPage.setAttribute("class", "hidden");
+    questionPage.setAttribute("class", "display");
+    questionText.innerHTML = questions[pageNumber-1];
+    if (pageNumber === 1) {
+        for (i = 0; i < 4; i++) {
+        answerText[i].innerHTML = answers.pageOne[i];}
+    } else if (pageNumber === 1) {
+        for (i = 0; i < 4; i++) {
+            answerText[i].innerHTML = answers.pageTwo[i];}
+    }
+}
+
+function displayScorePage(){
+    introPage.setAttribute("class", "hidden");
+    questionPage.setAttribute("class", "hidden");
+    scorePage.setAttribute("class", "display");
 }
