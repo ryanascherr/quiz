@@ -8,7 +8,7 @@ var answerText = document.querySelectorAll(".answer-button");
 
 var questions = ["Question 1:", "Question 2:", "Question 3:", "Question 4:", "Question 5:"]
 var answers = {
-    pageOne: ["1", "2", "3", "Again!"],
+    pageOne: ["Some text and stuffff!!!", "2", "3", "Again!"],
     pageTwo: ["4", "5", "6"],
     pageThree: ["7", "8", "9"],
     pageFour: ["10", "11", "12"],
