@@ -14,6 +14,10 @@ body{
     display: none;
 }
 
+.shown{
+    display: block;
+}
+
 header{
     width: 50%;
     margin: 0 auto;
@@ -30,7 +34,7 @@ p{
     font-size: 20px;
 }
 
-button{
+.start-button{
     display: block;
     margin: 0 auto;
     font-size: 40px;
@@ -43,7 +47,7 @@ button{
     transition-duration: .5s;
 }
 
-button:hover{
+.start-button:hover{
     box-shadow: 10px 10px 10px #3E667A;
     transform: scale(1.1);
 }
