@@ -9,10 +9,10 @@ var clickable = document.querySelector(".clickable");
 
 var questions = ["Inside which HTML element do we put the JavaScript?", 'What is the correct JavaScript syntax to change the content of the following HTML element:', 'How do you write "Hello World" in an alert box?', "How do you create a function in JavaScript?", "How to write an IF statement in JavaScript?"]
 var answers = {
-    pageOne: ["1: script", "2: JS", "3: javascript", "4: scripting"],
-    pageTwo: ["4:", "5:", "6:", "7:"],
-    pageThree: ["8:", "9:", "10:", "11:"],
-    pageFour: ["12:", "13:", "14:", "15:"],
+    pageOne: ["1: <script>", "2: JS", "3: javascript", "4: scripting"],
+    pageTwo: ["4:", "5:", "Correct Answer 2", "7:"],
+    pageThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World")'],
+    pageFour: ["1: function = myFunction()", "2: function myFunction()", "3: function:myFunction()", "4: function(myFunction())"],
     pageFive: ["16:", "17:", "18:", "19:"]
   };
 
@@ -26,8 +26,10 @@ clickable.addEventListener("click", function(event) {
 
     if (element.matches(".answer-button")) {
         pageNumber++;
-        if (element.innerHTML.includes("2: JS") || (element.innerHTML.includes("3: javascript"))) {
-            secondsLeft = secondsLeft-10;
+        if (element.innerHTML.includes("1: script") || (element.innerHTML.includes("Correct Answer 2")) || (element.innerHTML.includes("Correct Answer 3"))) {
+            secondsLeft = secondsLeft;
+        } else {
+            secondsLeft = secondsLeft - 10;
         }
         displayQuestionPage();
     }
