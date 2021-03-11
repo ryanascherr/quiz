@@ -6,9 +6,9 @@ var scorePage = document.querySelector("#score-page");
 var questionText = document.querySelector("#question-text");
 var answerText = document.querySelectorAll(".answer-button");
 
-var questions = ["Question 1:", "Question 2:", "Question 3:", "Question 4:", "Question 5:"]
+var questions = ["Inside which HTML element do we put the JavaScript?", 'What is the correct JavaScript syntax to change the content of the following HTML element: id="demo">This is a demonstration.</p>', "Question 3:", "Question 4:", "Question 5:"]
 var answers = {
-    pageOne: ["Some text and stuffff!!!", "2", "3", "Again!"],
+    pageOne: ["1: script", "2: JS", "3: javascript", "4: scripting"],
     pageTwo: ["4", "5", "6"],
     pageThree: ["7", "8", "9"],
     pageFour: ["10", "11", "12"],

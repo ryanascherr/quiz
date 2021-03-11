@@ -32,6 +32,8 @@ h1{
 
 h2{
     font-size: 200%;
+    color: #3E667A;
+    margin-bottom: 2%;
 }
 
 p{
@@ -58,8 +60,8 @@ p{
 }
 
 #question-page{
-    width: 50%;
-    margin: 0 auto;
+    width: 75%;
+    padding: 5% 0 0 5%;
 }
 
 ul{
