@@ -9,22 +9,22 @@ var answerText = document.querySelectorAll(".answer-button");
 
 var questions = [
 "Inside which HTML element do we put the JavaScript?",
-'What is the correct JavaScript syntax to change the content of the following HTML element:', 
+'What is the correct JavaScript syntax to change the content of the following HTML element: <p id="demo">This is an example.</p>', 
 'How do you write "Hello World" in an alert box?', "How do you create a function in JavaScript?",
-"How to write an IF statement in JavaScript?"
+"How do you write an IF statement in JavaScript?"
 ]
 
 var answers = {
     pageOne: ["1: <script>", "2: <JS>", "3: <javascript>", "4: <scripting>"],
-    pageTwo: ["4:", "5:", "Correct Answer 2", "7:"],
+    pageTwo: ['1: document.getElementByName("p").innerHTML = "Hello World!"', '2: #demo.innerHTML = "Hello World!"', '3: document.getElement("p").innerHTML = "Hello World!"', '4: document.getElementById("demo").innerHTML = "Hello World!"'],
     pageThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World")'],
     pageFour: ["1: function = myFunction()", "2: function myFunction()", "3: function:myFunction()", "4: function(myFunction())"],
-    pageFive: ["16:", "17:", "18:", "19:"]
+    pageFive: ["1. if i==5 then", "2. if i=5", "3. if (i==5)", "if i=5 then"]
   };
 
 var secondsLeft = 60;
 var pageNumber = 0;
-var points;
+var points = 0;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -34,10 +34,10 @@ clickable.addEventListener("click", function(event) {
     if (element.matches(".answer-button")) {
         pageNumber++;
         if (element.textContent.includes("1: <script>") ||
-        (element.textContent.includes()) ||
-        (element.textContent.includes('4: alert("Hello World")')))
-        {
-            secondsLeft = secondsLeft;
+        (element.textContent.includes('4: document.getElementById("demo").innerHTML = "Hello World!"')) || (element.textContent.includes('4: alert("Hello World")')) ||
+        (element.textContent.includes("2: function myFunction()")) || 
+        (element.textContent.includes("3. if (i==5)"))) {
+            points = points + 10;
         } else {
             secondsLeft = secondsLeft - 10;
         }
@@ -52,6 +52,7 @@ function startQuiz() {
 }
 
 function startTimer() {
+    document.getElementById("timer").innerHTML = secondsLeft + " seconds remaining";
     timerFunction = setInterval(function() {
         secondsLeft--;
         if (secondsLeft > 1) {
@@ -101,4 +102,8 @@ function displayScorePage(){
     introPage.setAttribute("class", "hidden");
     questionPage.setAttribute("class", "hidden");
     scorePage.setAttribute("class", "display");
+    if (pageNumber === 6) {
+        
+    }
+    scorePage.textContent = "Your score is: " + points + "!"
 }
