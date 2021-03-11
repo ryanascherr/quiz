@@ -26,6 +26,9 @@ clickable.addEventListener("click", function(event) {
 
     if (element.matches(".answer-button")) {
         pageNumber++;
+        if (element.innerHTML.includes("2: JS") || (element.innerHTML.includes("3: javascript"))) {
+            secondsLeft = secondsLeft-10;
+        }
         displayQuestionPage();
     }
 });
