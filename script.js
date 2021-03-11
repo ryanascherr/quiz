@@ -5,20 +5,30 @@ var questionPage = document.querySelector("#question-page");
 var scorePage = document.querySelector("#score-page");
 var questionText = document.querySelector("#question-text");
 var answerText = document.querySelectorAll(".answer-button");
+var clickable = document.querySelector(".clickable");
 
-var questions = ["Inside which HTML element do we put the JavaScript?", 'What is the correct JavaScript syntax to change the content of the following HTML element: id="demo">This is a demonstration.</p>', "Question 3:", "Question 4:", "Question 5:"]
+var questions = ["Inside which HTML element do we put the JavaScript?", 'What is the correct JavaScript syntax to change the content of the following HTML element:', 'How do you write "Hello World" in an alert box?', "How do you create a function in JavaScript?", "How to write an IF statement in JavaScript?"]
 var answers = {
     pageOne: ["1: script", "2: JS", "3: javascript", "4: scripting"],
-    pageTwo: ["4", "5", "6"],
-    pageThree: ["7", "8", "9"],
-    pageFour: ["10", "11", "12"],
-    pageFive: ["13", "14", "15"]
+    pageTwo: ["4:", "5:", "6:", "7:"],
+    pageThree: ["8:", "9:", "10:", "11:"],
+    pageFour: ["12:", "13:", "14:", "15:"],
+    pageFive: ["16:", "17:", "18:", "19:"]
   };
 
 var secondsLeft = 60;
 var pageNumber = 0;
 
 startButton.addEventListener("click", startQuiz);
+
+clickable.addEventListener("click", function(event) {
+    var element = event.target;
+
+    if (element.matches(".answer-button")) {
+        pageNumber++;
+        displayQuestionPage();
+    }
+});
 
 function startQuiz() {
     pageNumber++;
@@ -53,9 +63,20 @@ function displayQuestionPage(){
     if (pageNumber === 1) {
         for (i = 0; i < 4; i++) {
         answerText[i].innerHTML = answers.pageOne[i];}
-    } else if (pageNumber === 1) {
+    } else if (pageNumber === 2) {
         for (i = 0; i < 4; i++) {
-            answerText[i].innerHTML = answers.pageTwo[i];}
+        answerText[i].innerHTML = answers.pageTwo[i];}
+    } else if (pageNumber === 3) {
+        for (i = 0; i < 4; i++) {
+        answerText[i].innerHTML = answers.pageThree[i];}
+    } else if (pageNumber === 4) {
+        for (i = 0; i < 4; i++) {
+        answerText[i].innerHTML = answers.pageFour[i];}
+    } else if (pageNumber === 5) {
+        for (i = 0; i < 4; i++) {
+        answerText[i].innerHTML = answers.pageFive[i];}
+    } else if (pageNumber === 6) {
+        displayScorePage();
     }
 }
 
