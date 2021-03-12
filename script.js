@@ -6,6 +6,8 @@ var scorePage = document.querySelector("#score-page");
 var questionText = document.querySelector("#question-text");
 var clickable = document.querySelector(".clickable");
 var answerText = document.querySelectorAll(".answer-button");
+var endText = document.querySelector("#end-text");
+var scoreText = document.querySelector("#score-text");
 
 var questions = [
 "Inside which HTML element do we put the JavaScript?",
@@ -37,7 +39,7 @@ clickable.addEventListener("click", function(event) {
         (element.textContent.includes('4: document.getElementById("demo").innerHTML = "Hello World!"')) || (element.textContent.includes('4: alert("Hello World")')) ||
         (element.textContent.includes("2: function myFunction()")) || 
         (element.textContent.includes("3. if (i==5)"))) {
-            points = points + 10;
+            points = points + 100;
         } else {
             secondsLeft = secondsLeft - 10;
         }
@@ -52,15 +54,16 @@ function startQuiz() {
 }
 
 function startTimer() {
-    document.getElementById("timer").innerHTML = secondsLeft + " seconds remaining";
+    timer.innerHTML = secondsLeft + " seconds remaining";
     timerFunction = setInterval(function() {
         secondsLeft--;
         if (secondsLeft > 1) {
-            document.getElementById("timer").innerHTML = secondsLeft + " seconds remaining";
+            timer.innerHTML = secondsLeft + " seconds remaining";
         } else if (secondsLeft === 1) {
-            document.getElementById("timer").innerHTML = secondsLeft + " second remaining";
-        } else if (secondsLeft <= 0) {
-            document.getElementById("timer").setAttribute("class", "hidden");
+            timer.innerHTML = secondsLeft + " second remaining";
+        } if (secondsLeft <= 0 || pageNumber === 6) {
+            timer.setAttribute("class", "hidden");
+            clearInterval(startTimer);
             displayScorePage();
         }
     }, 1000);
@@ -99,11 +102,14 @@ function displayQuestionPage(){
 }
 
 function displayScorePage(){
+    clearInterval(startTimer);
+    var timePoints = secondsLeft * 10;
+    var finalScore = timePoints + points;
+    
     introPage.setAttribute("class", "hidden");
     questionPage.setAttribute("class", "hidden");
     scorePage.setAttribute("class", "display");
-    if (pageNumber === 6) {
-        
-    }
-    scorePage.textContent = "Your score is: " + points + "!"
+    endText.textContent = "All done!";
+    scoreText.textContent = "Your final score is " + finalScore + ".";
+
 }
