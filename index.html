@@ -32,6 +32,22 @@
     <div id="score-page" class="hidden">
         <h2 id="end-text"></h2>
         <p id="score-text"></p>
+        <div class="flex">
+            <form>
+                <label for="score">Enter Initials: </label>
+                <input type="text" id="initials" name="initials" value=""><br>
+            </form>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="hidden"  id="high-score-page">
+        <h2>High Scores</h2>
+        <div id="all-scores-listed"></div>
+        <div class="other-flex">
+            <button id="go-back">Go Back</button>
+            <button id="clear-high-scores">Clear High Scores</button>
+        </div>
     </div>
 
     <script src="./script.js"></script>

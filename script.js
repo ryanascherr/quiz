@@ -3,11 +3,16 @@ var timer = document.querySelector("#timer");
 var introPage = document.querySelector("#intro-page");
 var questionPage = document.querySelector("#question-page");
 var scorePage = document.querySelector("#score-page");
+var highScorePage = document.querySelector("#high-score-page");
 var questionText = document.querySelector("#question-text");
 var clickable = document.querySelector(".clickable");
 var answerText = document.querySelectorAll(".answer-button");
 var endText = document.querySelector("#end-text");
 var scoreText = document.querySelector("#score-text");
+var submit = document.querySelector("#submit");
+var allScoresListed = document.querySelector("#all-scores-listed");
+var goBack = document.querySelector("#go-back");
+var clearHighScores = document.querySelector("#clear-high-scores");
 
 var questions = [
 "Inside which HTML element do we put the JavaScript?",
@@ -27,6 +32,8 @@ var answers = {
 var secondsLeft = 60;
 var pageNumber = 0;
 var points = 0;
+var timePoints = secondsLeft * 10;
+var finalScore = timePoints + points;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -46,6 +53,26 @@ clickable.addEventListener("click", function(event) {
         displayQuestionPage();
     }
 });
+
+submit.addEventListener("click", function(event) {
+    event.preventDefault
+    setHighScore();
+    secondsLeft = 60;
+    pageNumber = 0;
+    displayHighScorePage();
+})
+
+goBack.addEventListener("click", function() {
+    displayIntroPage();
+})
+
+clearHighScores.addEventListener("click", function() {
+    localStorage.clear();
+})
+
+function setHighScore() {
+    localStorage.setItem("highscore", finalScore); 
+}
 
 function startQuiz() {
     pageNumber++;
@@ -70,15 +97,13 @@ function startTimer() {
 }
 
 function displayIntroPage(){
-    scorePage.setAttribute("class", "hidden");
-    questionPage.setAttribute("class", "hidden");
+    hideAllPages();
     introPage.setAttribute("class", "display");
     pageNumber = 0;
 }
 
 function displayQuestionPage(){
-    scorePage.setAttribute("class", "hidden");
-    introPage.setAttribute("class", "hidden");
+    hideAllPages();
     questionPage.setAttribute("class", "display");
     questionText.textContent = questions[pageNumber-1];
     if (pageNumber === 1) {
@@ -103,13 +128,22 @@ function displayQuestionPage(){
 
 function displayScorePage(){
     clearInterval(startTimer);
-    var timePoints = secondsLeft * 10;
-    var finalScore = timePoints + points;
-    
-    introPage.setAttribute("class", "hidden");
-    questionPage.setAttribute("class", "hidden");
+    hideAllPages();
     scorePage.setAttribute("class", "display");
     endText.textContent = "All done!";
     scoreText.textContent = "Your final score is " + finalScore + ".";
+}
 
+function displayHighScorePage() {
+    hideAllPages();
+    highScorePage.setAttribute("class", "display");
+    newVar = localStorage.getItem("highscore")
+    allScoresListed.textContent = "1. " + newVar;
+}
+
+function hideAllPages() {
+    introPage.setAttribute("class", "hidden");
+    questionPage.setAttribute("class", "hidden");
+    scorePage.setAttribute("class", "hidden");
+    highScorePage.setAttribute("class", "hidden");
 }
