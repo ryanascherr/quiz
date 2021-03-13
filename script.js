@@ -22,11 +22,11 @@ var questions = [
 ]
 
 var answers = {
-    pageOne: ["1: <script>", "2: <JS>", "3: <javascript>", "4: <scripting>"],
-    pageTwo: ['1: document.getElementByName("p").innerHTML = "Hello World!"', '2: #demo.innerHTML = "Hello World!"', '3: document.getElement("p").innerHTML = "Hello World!"', '4: document.getElementById("demo").innerHTML = "Hello World!"'],
-    pageThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World")'],
-    pageFour: ["1: function = myFunction()", "2: function myFunction()", "3: function:myFunction()", "4: function(myFunction())"],
-    pageFive: ["1. if i==5 then", "2. if i=5", "3. if (i==5)", "if i=5 then"]
+    questionOne: ["1: <script>", "2: <JS>", "3: <javascript>", "4: <scripting>"],
+    questionTwo: ['1: document.getElementByName("p").innerHTML = "Hello World!"', '2: #demo.innerHTML = "Hello World!"', '3: document.getElement("p").innerHTML = "Hello World!"', '4: document.getElementById("demo").innerHTML = "Hello World!"'],
+    questionThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World")'],
+    questionFour: ["1: function = myFunction()", "2: function myFunction()", "3: function:myFunction()", "4: function(myFunction())"],
+    questionFive: ["1. if i==5 then", "2. if i=5", "3. if (i==5)", "if i=5 then"]
   };
 
 var secondsLeft = 0;
@@ -74,6 +74,7 @@ function displayIntroPage(){
     hideAllPages();
     introPage.setAttribute("class", "display");
     pageNumber = 0;
+    secondsLeft = 0;
     timer.innerHTML = secondsLeft + " seconds remaining";
 }
 
@@ -83,19 +84,19 @@ function displayQuestionPage(){
     questionText.textContent = questions[pageNumber-1];
     if (pageNumber === 1) {
         for (i = 0; i < 4; i++) {
-        answerText[i].textContent = answers.pageOne[i];}
+        answerText[i].textContent = answers.questionOne[i];}
     } else if (pageNumber === 2) {
         for (i = 0; i < 4; i++) {
-        answerText[i].textContent = answers.pageTwo[i];}
+        answerText[i].textContent = answers.questionTwo[i];}
     } else if (pageNumber === 3) {
         for (i = 0; i < 4; i++) {
-        answerText[i].textContent = answers.pageThree[i];}
+        answerText[i].textContent = answers.questionThree[i];}
     } else if (pageNumber === 4) {
         for (i = 0; i < 4; i++) {
-        answerText[i].textContent = answers.pageFour[i];}
+        answerText[i].textContent = answers.questionFour[i];}
     } else if (pageNumber === 5) {
         for (i = 0; i < 4; i++) {
-        answerText[i].textContent = answers.pageFive[i];}
+        answerText[i].textContent = answers.questionFive[i];}
     } else if (pageNumber === 6) {
         displayScorePage();
     }
