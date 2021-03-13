@@ -29,11 +29,11 @@ var answers = {
     pageFive: ["1. if i==5 then", "2. if i=5", "3. if (i==5)", "if i=5 then"]
   };
 
-var secondsLeft = 60;
+var secondsLeft = 0;
 var pageNumber = 0;
 var points = 0;
-var timePoints = secondsLeft * 10;
-var finalScore = timePoints + points;
+var timePoints;
+var finalScore;
 
 startButton.addEventListener("click", startQuiz);
 
@@ -70,36 +70,11 @@ clearHighScores.addEventListener("click", function() {
     localStorage.clear();
 })
 
-function setHighScore() {
-    localStorage.setItem("highscore", finalScore); 
-}
-
-function startQuiz() {
-    pageNumber++;
-    displayQuestionPage();
-    startTimer();
-}
-
-function startTimer() {
-    timer.innerHTML = secondsLeft + " seconds remaining";
-    timerFunction = setInterval(function() {
-        secondsLeft--;
-        if (secondsLeft > 1) {
-            timer.innerHTML = secondsLeft + " seconds remaining";
-        } else if (secondsLeft === 1) {
-            timer.innerHTML = secondsLeft + " second remaining";
-        } if (secondsLeft <= 0 || pageNumber === 6) {
-            timer.setAttribute("class", "hidden");
-            clearInterval(startTimer);
-            displayScorePage();
-        }
-    }, 1000);
-}
-
 function displayIntroPage(){
     hideAllPages();
     introPage.setAttribute("class", "display");
     pageNumber = 0;
+    timer.innerHTML = secondsLeft + " seconds remaining";
 }
 
 function displayQuestionPage(){
@@ -127,7 +102,9 @@ function displayQuestionPage(){
 }
 
 function displayScorePage(){
-    clearInterval(startTimer);
+    timePoints = secondsLeft * 10;
+    finalScore = points + timePoints;
+    
     hideAllPages();
     scorePage.setAttribute("class", "display");
     endText.textContent = "All done!";
@@ -141,9 +118,36 @@ function displayHighScorePage() {
     allScoresListed.textContent = "1. " + newVar;
 }
 
+function setHighScore() {
+    localStorage.setItem("highscore", finalScore); 
+}
+
+function startQuiz() {
+    pageNumber++;
+    displayQuestionPage();
+    startTimer();
+}
+
+function startTimer() {
+    secondsLeft = 60;
+    timerFunction = setInterval(function() {
+        secondsLeft--;
+        if (secondsLeft > 1) {
+            timer.innerHTML = secondsLeft + " seconds remaining";
+        } else if (secondsLeft === 1) {
+            timer.innerHTML = secondsLeft + " second remaining";
+        } if (secondsLeft <= 0 || pageNumber === 6) {
+            clearTimeout(timerFunction);
+            displayScorePage();
+        }
+    }, 1000);
+}
+
 function hideAllPages() {
     introPage.setAttribute("class", "hidden");
     questionPage.setAttribute("class", "hidden");
     scorePage.setAttribute("class", "hidden");
     highScorePage.setAttribute("class", "hidden");
 }
+
+displayIntroPage();

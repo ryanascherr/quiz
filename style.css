@@ -101,6 +101,21 @@ li{
     color: #3E667A;
 }
 
+#view-high-scores{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #3E667A;
+    cursor: pointer
+}
+
+#view-high-scores:hover{
+    opacity: 75%;
+}
+
 label{
     color: #3E667A;
     font-weight: bold;
