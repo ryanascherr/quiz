@@ -14,6 +14,7 @@ var goBack = document.querySelector("#go-back");
 var clearHighScores = document.querySelector("#clear-high-scores");
 var initialsText = document.querySelector("#initials");
 var unorderedList = document.querySelector("#unordered-list-high-scores");
+var newListItem = document.querySelectorAll(".test");
 
 var questions = [
 "1. Inside which HTML element do we put the JavaScript?",
@@ -69,7 +70,8 @@ goBack.addEventListener("click", function() {
 
 clearHighScores.addEventListener("click", function() {
     localStorage.clear();
-    allScoresListed.setAttribute("class", "hidden")
+    //allScoresListed.setAttribute("class", "hidden");
+    newListItem.remove();
 })
 
 function hideAllPages() {
@@ -121,23 +123,33 @@ function displayScorePage(){
 }
 
 function displayHighScorePage() {
+
+    //hide all other pages
     hideAllPages();
+
+    //display highScorePage and allScoresListed
     highScorePage.setAttribute("class", "display");
     allScoresListed.setAttribute("class", "display");
+
+    //get highscore and initials from local storage
     aHighScore = localStorage.getItem("highscore");
     anInitial = localStorage.getItem("initials");
 
-    //when displayHighScore is called
-    //hide all other pages
-    //display highScorePage and allScoresListed
-    //get highscore and initials from local storage
+    //make initials all caps and remove any blank space
+    anInitial = anInitial.toUpperCase();
+    anInitial = anInitial.trim();
+    
     //create a list item
-    var newListItem = document.createElement("li");
+    newListItem = document.createElement("li");
+
     //place the text in the list item
     newListItem.textContent = "1. " + anInitial + " - " + aHighScore;
+
+    //apply style to li
+    newListItem.setAttribute("class", "ul-style test");
+
     //append the list item to a ul
     unorderedList.appendChild(newListItem);
-
 }
 
 function startQuiz() {
