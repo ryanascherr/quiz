@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <title>Javascript Quiz</title>
 </head>
+
 <body>
     <span id="timer" class="shown"></span>
     <span id="view-high-scores" class="shown">View High Scores</span>
@@ -31,7 +32,7 @@
     </div>
 
     <div id="score-page" class="hidden">
-        <h2 id="end-text"></h2>
+        <h2 id="end-text">All Done!</h2>
         <p id="score-text"></p>
         <div class="flex">
             <form>
@@ -44,7 +45,9 @@
 
     <div class="hidden"  id="high-score-page">
         <h2>High Scores</h2>
-        <div id="all-scores-listed"></div>
+        <div id="all-scores-listed" class="display">
+            <ul id="unordered-list-high-scores"></ul>
+        </div>
         <div class="other-flex">
             <button id="go-back">Go Back</button>
             <button id="clear-high-scores">Clear High Scores</button>
