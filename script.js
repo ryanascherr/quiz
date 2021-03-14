@@ -42,6 +42,7 @@ startButton.addEventListener("click", startQuiz);
 clickable.addEventListener("click", function(event) {
     var element = event.target;
 
+    //if user clicks on a button and the text matches one of the 5 answers, give them points. Otherwise, remove seconds. Increase questionNumber and then display the next question.
     if (element.matches(".answer-button")) {
         questionNumber++;
         if (element.textContent.includes("1: <script>") ||
@@ -75,6 +76,8 @@ clearHighScores.addEventListener("click", function() {
 })
 
 function hideAllPages() {
+
+    //used to hide all pages before displaying another one
     introPage.setAttribute("class", "hidden");
     questionPage.setAttribute("class", "hidden");
     scorePage.setAttribute("class", "hidden");
@@ -179,6 +182,5 @@ function setHighScore() {
     localStorage.setItem("highscore", finalScore);
     localStorage.setItem("initials", initials);
 }
-
 
 displayIntroPage();
