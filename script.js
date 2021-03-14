@@ -96,6 +96,7 @@ function hideAllPages() {
 function displayIntroPage(){
     hideAllPages();
     introPage.setAttribute("class", "display");
+    viewHighScores.setAttribute("class", "display");
     questionNumber = 0;
     secondsLeft = 0;
     timer.innerHTML = secondsLeft + " seconds remaining";
@@ -158,7 +159,7 @@ function displayHighScorePage() {
     newListItem.textContent = " " + anInitial + " - " + aHighScore;
 
     //apply style to li
-    newListItem.setAttribute("class", "test");
+    newListItem.setAttribute("class", "ol-style");
 
     //append the list item to a ol
     orderedList.appendChild(newListItem);

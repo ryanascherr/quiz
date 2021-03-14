@@ -194,8 +194,11 @@ p{
     padding: 5px;
 }
 
-.ul-style{
-    list-style-type: none;
+.ol-style{
     color: var(--teal);
     font-weight: bold;
+}
+
+#ordered-list-high-scores{
+    padding-left: 20px;
 }
