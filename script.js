@@ -13,8 +13,9 @@ var allScoresListed = document.querySelector("#all-scores-listed");
 var goBack = document.querySelector("#go-back");
 var clearHighScores = document.querySelector("#clear-high-scores");
 var initialsText = document.querySelector("#initials");
-var unorderedList = document.querySelector("#unordered-list-high-scores");
+var orderedList = document.querySelector("#ordered-list-high-scores");
 var newListItem = document.querySelectorAll(".test");
+var viewHighScores = document.querySelector("#view-high-scores");
 
 var questions = [
 "1. Inside which HTML element do we put the JavaScript?",
@@ -44,7 +45,10 @@ clickable.addEventListener("click", function(event) {
 
     //if user clicks on a button and the text matches one of the 5 answers, give them points. Otherwise, remove seconds. Increase questionNumber and then display the next question.
     if (element.matches(".answer-button")) {
+
+        //this variable changes which questions and answers are displayed
         questionNumber++;
+
         if (element.textContent.includes("1: <script>") ||
         (element.textContent.includes('4: document.getElementById("demo").innerHTML = "Hello World!"')) || (element.textContent.includes('4: alert("Hello World")')) ||
         (element.textContent.includes("2: function myFunction()")) || 
@@ -66,12 +70,17 @@ submit.addEventListener("click", function(event) {
 })
 
 goBack.addEventListener("click", function() {
+    localStorage.clear();
     displayIntroPage();
+})
+
+viewHighScores.addEventListener("click", function() {
+    hideAllPages();
+    displayHighScorePage();
 })
 
 clearHighScores.addEventListener("click", function() {
     localStorage.clear();
-    //allScoresListed.setAttribute("class", "hidden");
     newListItem.remove();
 })
 
@@ -146,13 +155,13 @@ function displayHighScorePage() {
     newListItem = document.createElement("li");
 
     //place the text in the list item
-    newListItem.textContent = "1. " + anInitial + " - " + aHighScore;
+    newListItem.textContent = " " + anInitial + " - " + aHighScore;
 
     //apply style to li
-    newListItem.setAttribute("class", "ul-style test");
+    newListItem.setAttribute("class", "test");
 
-    //append the list item to a ul
-    unorderedList.appendChild(newListItem);
+    //append the list item to a ol
+    orderedList.appendChild(newListItem);
 }
 
 function startQuiz() {
