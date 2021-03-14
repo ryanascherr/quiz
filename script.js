@@ -96,7 +96,6 @@ function hideAllPages() {
 function displayIntroPage(){
     hideAllPages();
     introPage.setAttribute("class", "display");
-    viewHighScores.setAttribute("class", "display");
     questionNumber = 0;
     secondsLeft = 0;
     timer.innerHTML = secondsLeft + " seconds remaining";
