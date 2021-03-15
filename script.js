@@ -26,7 +26,7 @@ var questions = [
 var answers = {
     questionOne: ["1: <script>", "2: <JS>", "3: <javascript>", "4: <scripting>"],
     questionTwo: ['1: document.getElementByName("p").innerHTML = "Hello World!"', '2: #demo.innerHTML = "Hello World!"', '3: document.getElement("p").innerHTML = "Hello World!"', '4: document.getElementById("demo").innerHTML = "Hello World!"'],
-    questionThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World")'],
+    questionThree: ['1: msgBox("Hello World");', '2: msg("Hello World");', '3: alertBox("Hello World");', '4: alert("Hello World");'],
     questionFour: ["1: function = myFunction()", "2: function myFunction()", "3: function:myFunction()", "4: function(myFunction())"],
     questionFive: ["1. if i==5 then", "2. if i=5", "3. if (i==5)", "4. if i=5 then"]
   }
@@ -42,7 +42,7 @@ startButton.addEventListener("click", startQuiz);
 clickable.addEventListener("click", function(event) {
     var element = event.target;
 
-    //if user clicks on a button and the text matches one of the 5 answers, give them points. Otherwise, remove seconds. Increase questionNumber and then display the next question.
+    //if user clicks on a button and the text matches one of the 5 answers, give them points and them them they were correct. Otherwise, remove seconds and tell them they were incorrect. Increase questionNumber and then display the next question.
     if (element.matches(".answer-button")) {
 
         //this variable changes which questions and answers are displayed
@@ -53,8 +53,12 @@ clickable.addEventListener("click", function(event) {
         (element.textContent.includes("2: function myFunction()")) || 
         (element.textContent.includes("3. if (i==5)"))) {
             points = points + 100;
+            document.getElementById("feedback").setAttribute("class", "correct")
+            document.getElementById("feedback").textContent = "Correct! :)"
         } else {
             secondsLeft = secondsLeft - 10;
+            document.getElementById("feedback").setAttribute("class", "incorrect")
+            document.getElementById("feedback").textContent = "Incorrect! :("
         }
         displayQuestionPage();
     }
@@ -140,6 +144,9 @@ function displayHighScorePage() {
 
     //hide all other pages
     hideAllPages();
+
+    //remove the feedback text
+    document.getElementById("feedback").textContent = "";
 
     //display highScorePage and allScoresListed
     highScorePage.setAttribute("class", "display");

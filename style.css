@@ -202,3 +202,17 @@ p{
 #ordered-list-high-scores{
     padding-left: 20px;
 }
+
+#feedback{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.correct{
+    color: rgb(69, 209, 69);
+}
+
+.incorrect{
+    color: rgb(179, 40, 40);
+}
