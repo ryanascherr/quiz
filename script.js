@@ -14,8 +14,8 @@ var goBack = document.querySelector("#go-back");
 var clearHighScores = document.querySelector("#clear-high-scores");
 var initialsText = document.querySelector("#initials");
 var orderedList = document.querySelector("#ordered-list-high-scores");
-var newListItem = document.querySelectorAll(".test");
 var viewHighScores = document.querySelector("#view-high-scores");
+var listItems = document.querySelectorAll(".ol-style");
 
 var questions = [
 "1. Inside which HTML element do we put the JavaScript?",
@@ -70,18 +70,19 @@ submit.addEventListener("click", function(event) {
 })
 
 goBack.addEventListener("click", function() {
-    localStorage.clear();
     displayIntroPage();
 })
 
 viewHighScores.addEventListener("click", function() {
     hideAllPages();
-    displayHighScorePage();
+    highScorePage.setAttribute("class", "display");
 })
 
 clearHighScores.addEventListener("click", function() {
     localStorage.clear();
-    newListItem.remove();
+    for (i = 0; i < listItems.length; i++) {
+        listItems[i].remove();
+    }
 })
 
 function hideAllPages() {
@@ -126,7 +127,7 @@ function displayQuestionPage(){
 }
 
 function displayScorePage(){
-    timePoints = secondsLeft * 10;
+    timePoints = secondsLeft;
     finalScore = points + timePoints;
     
     hideAllPages();
@@ -141,7 +142,6 @@ function displayHighScorePage() {
 
     //display highScorePage and allScoresListed
     highScorePage.setAttribute("class", "display");
-    allScoresListed.setAttribute("class", "display");
 
     //get highscore and initials from local storage
     aHighScore = localStorage.getItem("highscore");
