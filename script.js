@@ -15,7 +15,6 @@ var clearHighScores = document.querySelector("#clear-high-scores");
 var initialsText = document.querySelector("#initials");
 var orderedList = document.querySelector("#ordered-list-high-scores");
 var viewHighScores = document.querySelector("#view-high-scores");
-var listItems = document.querySelectorAll(".ol-style");
 
 var questions = [
 "1. Inside which HTML element do we put the JavaScript?",
@@ -80,8 +79,8 @@ viewHighScores.addEventListener("click", function() {
 
 clearHighScores.addEventListener("click", function() {
     localStorage.clear();
-    for (i = 0; i < listItems.length; i++) {
-        listItems[i].remove();
+    for (i = 0; i < orderedList.children.length; i++) {
+        orderedList.removeChild(orderedList.childNodes[i]);
     }
 })
 
@@ -99,6 +98,8 @@ function displayIntroPage(){
     introPage.setAttribute("class", "display");
     questionNumber = 0;
     secondsLeft = 0;
+    points = 0;
+    timePoints = 0;
     timer.innerHTML = secondsLeft + " seconds remaining";
 }
 
