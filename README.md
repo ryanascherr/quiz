@@ -2,7 +2,7 @@
 
 ## Description
 
-Users can brush up on their JavaScript knowledge by taking a brief quiz on sime of the fundamentals. Useful for veterans and novices alike, users can keep track of their progress via their high scores.
+Users can brush up on their JavaScript knowledge by taking a brief quiz on some of the fundamentals of the language. Useful for veterans and novices alike, users can keep track of their progress via their high scores.
 
 ## Installation
 
@@ -21,7 +21,7 @@ At the end of the quiz, the user will see their final score and can enter their 
 
 ## Features
 
-While this simple page has no break points, its simple design will display nicely across almost any screen size.
+While this page has no break points, its simple design will display nicely across almost any screen size.
 
 ## Credits
 
